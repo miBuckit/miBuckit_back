@@ -14,11 +14,10 @@ import lombok.RequiredArgsConstructor;
 @Transactional
 public class TestService {
 	
-	// private final SqlSessionTemplate sqlSession;
+	private final SqlSessionTemplate sqlSession;
 	
 	public TestPostManRes testPostMan(TestPostManReq testPostManReq) {
-		TestPostManRes testPostManRes = new TestPostManRes();
-		// TestPostManRes testPostManRes = sqlSession.selectOne("User.retrieveUser", testPostManReq);
+		TestPostManRes testPostManRes = sqlSession.selectOne("User.retrieveUser", testPostManReq);
 		return testPostManRes;
 	}
 }
