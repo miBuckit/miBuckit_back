@@ -20,4 +20,9 @@ public class TestController {
 	public TestPostManRes testPostMan(@RequestBody TestPostManReq testPostManReq) {
 		return testService.testPostMan(testPostManReq);
 	}
+
+	@GetMapping("/test/axios")
+	public String testAxios() {
+		return "test suc";
+	}
 }
