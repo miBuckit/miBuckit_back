@@ -10,10 +10,12 @@ import com.olTeam.mibuckit.test.dto.TestRetrieveRes;
 import com.olTeam.mibuckit.test.dto.TestUpdateReq;
 
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 
-@Service("TestService")
+@Service
 @RequiredArgsConstructor
 @Transactional
+@Slf4j
 public class TestService {
 	
 	private final SqlSessionTemplate sqlSession;
@@ -26,8 +28,8 @@ public class TestService {
 	 * @param testPostManReq
 	 * @return
 	 */
-	public TestRetrieveRes retrieveTest(TestRetrieveReq testPostManReq) {
-		return sqlSession.selectOne("Test.retrieveTestNm", testPostManReq);
+	public TestRetrieveRes retrieveTest(TestRetrieveReq testRetrieveReq) {
+		return sqlSession.selectOne("Test.retrieveTestNm", testRetrieveReq);
 	}
 	
 	/**
@@ -39,6 +41,7 @@ public class TestService {
 	 * @return
 	 */
 	public int InsertTest(TestInputReq testInputReq) {
+		log.info("testInputReq" + testInputReq);
 		return sqlSession.insert("Test.insertTestInfo", testInputReq);
 	}
 

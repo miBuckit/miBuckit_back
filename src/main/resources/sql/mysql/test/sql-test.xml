@@ -13,27 +13,30 @@
 	</select>
 	
 	<insert id="insertTestInfo" parameterType="com.olTeam.mibuckit.test.dto.TestInputReq">
+		<selectKey resultType="int" keyProperty="testId" order="BEFORE">
+	        SELECT IFNULL(MAX(TEST_ID),0)+1 FROM TB_MBK_TEST_M        
+	    </selectKey> 
 		INSERT INTO TB_MBK_TEST_M
 		(
 			TEST_ID
-			,TEST_PW
 			,TEST_NM
+			,TEST_PW
 			<include refid="Common.insertKey" />
 		)
 		VALUES
 		(
-			(select IFNULL(max(TEST_ID),0)+1)
-			,#{testPw}
+			#{testId}
 			,#{testNm}
+			,#{testPw}
 			<include refid="Common.insertValue" />
 		)
 	</insert>
 	
 	<update id="updateTestInfo" parameterType="com.olTeam.mibuckit.test.dto.TestUpdateReq">
 		UPDATE TB_MBK_TEST_M 
-		SET	TEST_ID = #{testId}
+		SET	TEST_NM = #{testNm}
 			,TEST_PW = #{testPw}
-			,TEST_NM = #{testNm}
 			<include refid="Common.update" />
+		WHERE TEST_ID = #{testId}
 	</update>
 </mapper>

@@ -21,8 +21,8 @@ public class TestController {
 	private TestService testService;
 	
 	@GetMapping("/test/get")
-	public TestRetrieveRes testGetMapping(TestRetrieveReq testPostManReq) {
-		return testService.retrieveTest(testPostManReq);
+	public TestRetrieveRes testGetMapping(TestRetrieveReq TestRetrieveReq) {
+		return testService.retrieveTest(TestRetrieveReq);
 	}
 	
 	@PostMapping("/test/post")

@@ -7,7 +7,7 @@ import lombok.EqualsAndHashCode;
 
 @Data
 public class TestUpdateReq extends Audit {
+	private int testId;
 	private String testNm;
-	private String testId;
 	private String testPw;
 }
