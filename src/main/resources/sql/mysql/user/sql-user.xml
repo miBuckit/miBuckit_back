@@ -6,9 +6,11 @@
 <mapper namespace="User">
 
 	<!-- 로그인상태 조회 -->
+	<!--
 	<select id="retrieveUser" resultType="com.olTeam.mibuckit.test.dto.TestPostManRes" parameterType="com.olTeam.mibuckit.test.dto.TestPostManReq">
 		select ID, NAME, TLNO 
 		from TB_MBK_USER_M
 		where ID=1
 	</select>
+	-->
 </mapper>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="Test">
+
+	<!-- 테스트 조회 -->
+	<select id="retrieveTestNm" resultType="com.olTeam.mibuckit.test.dto.TestRetrieveRes" parameterType="com.olTeam.mibuckit.test.dto.TestRetrieveReq">
+		select TEST_NM
+		from TB_MBK_TEST_M
+		where TEST_ID = #{testId}
+	</select>
+	
+	<insert id="insertTestInfo" parameterType="com.olTeam.mibuckit.test.dto.TestInputReq">
+		INSERT INTO TB_MBK_TEST_M
+		(
+			TEST_ID
+			,TEST_PW
+			,TEST_NM
+			<include refid="Common.insertKey" />
+		)
+		VALUES
+		(
+			(select IFNULL(max(TEST_ID),0)+1)
+			,#{testPw}
+			,#{testNm}
+			<include refid="Common.insertValue" />
+		)
+	</insert>
+	
+	<update id="updateTestInfo" parameterType="com.olTeam.mibuckit.test.dto.TestUpdateReq">
+		UPDATE TB_MBK_TEST_M 
+		SET	TEST_ID = #{testId}
+			,TEST_PW = #{testPw}
+			,TEST_NM = #{testNm}
+			<include refid="Common.update" />
+	</update>
+</mapper>
