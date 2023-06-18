@@ -13,9 +13,11 @@
 	</select>
 	
 	<insert id="insertTestInfo" parameterType="com.olTeam.mibuckit.test.dto.TestInputReq">
+		<!-- 자동생성이 필요할 경우 사용 
 		<selectKey resultType="int" keyProperty="testId" order="BEFORE">
 	        SELECT IFNULL(MAX(TEST_ID),0)+1 FROM TB_MBK_TEST_M        
 	    </selectKey> 
+		 -->
 		INSERT INTO TB_MBK_TEST_M
 		(
 			TEST_ID
