@@ -9,16 +9,17 @@ import com.olTeam.mibuckit.test.dto.TestRetrieveReq;
 import com.olTeam.mibuckit.test.dto.TestRetrieveRes;
 import com.olTeam.mibuckit.test.dto.TestUpdateReq;
 
+import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
 @Service
-@RequiredArgsConstructor
+@AllArgsConstructor
 @Transactional
 @Slf4j
 public class TestService {
 	
-	private final SqlSessionTemplate sqlSession;
+	private SqlSessionTemplate sqlSession;
 	
 	/**
 	 * @description : 
@@ -41,7 +42,6 @@ public class TestService {
 	 * @return
 	 */
 	public int InsertTest(TestInputReq testInputReq) {
-		log.info("testInputReq" + testInputReq);
 		return sqlSession.insert("Test.insertTestInfo", testInputReq);
 	}
 
